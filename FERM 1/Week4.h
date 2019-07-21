@@ -192,7 +192,7 @@ namespace week4 {
 		}
 		cout << "Q6 Answer: " << payoffs[0][0] << endl;
 		cout << endl;
-		cout << "Q7 I could not get the answer to Question 7 yet" << endl;
+		cout << "Q7 I could not get the answer to Question 7 yet but it is supposedly 7" << endl;
 
 		/*for (int step = num_periods_option - 1; step >= 0; --step) {
 			vector<double> future_payoff(step + 1);
