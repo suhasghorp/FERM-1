@@ -6,8 +6,21 @@
 #include <numeric>
 #include <cmath>
 #include <Eigen/Dense>
+
+/*#include <boost/numeric/ublas/vector.hpp>
+#include <boost/numeric/ublas/matrix_sparse.hpp>
+#include <boost/numeric/ublas/vector_sparse.hpp>
+#include <boost/numeric/ublas/lu.hpp>
+#include <boost/numeric/ublas/io.hpp>*/
+
+
+
+//namespace ublas = boost::numeric::ublas;
+
 using namespace std;
 using namespace Eigen;
+
+
 
 namespace week3 {
 
@@ -119,6 +132,18 @@ namespace week3 {
 
 	}
 
+	/*template <typename T, typename F = ublas::row_major>
+	ublas::matrix<T, F> makeMatrix(std::size_t m, std::size_t n, const std::vector<T> & v)
+	{
+		if (m*n != v.size()) {
+			; // Handle this case
+		}
+		ublas::unbounded_array<T> storage(m*n);
+		std::copy(v.begin(), v.end(), storage.begin());
+		return ublas::matrix<T>(m, n, storage);
+	}*/
+
+
 	void question6() {
 		/*
 		Call Options II
@@ -158,8 +183,22 @@ namespace week3 {
 
 		cout << "Q6 Answer: amount needed to invest in cash account: " << x(1, 0) << endl;
 
+		/*std::vector<double> Avec{ u * S, R, d * S, R };
+		std::vector<double> bvec{ Pu, Pd };
+
+		
+		ublas::matrix<double> AB = makeMatrix(2, 2, Avec);
+		ublas::matrix<double> bb = makeMatrix(2, 1, bvec);
+
+		ublas::permutation_matrix<size_t> pm(AB.size1());
+		lu_factorize(AB, pm);
+		lu_substitute(AB, pm, bb);
+		std::cout << bb << std::endl;*/
 
 	}
+
+	
+
 
 	void PS2_1() {
 		/*

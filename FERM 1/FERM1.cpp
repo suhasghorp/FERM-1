@@ -65,6 +65,23 @@ int main()
 	week4::question8(true,false);
 	cout << endl;
 
+	//Week 5
+	
+	cout << "-----------  Week5 -------------" << endl;
+	cout << endl;
+	cout << "--------   Class Spreadsheet  ------" << endl;
+	cout << endl;
+	week5::zcb_option(0.06, 1.25, 0.9, 0.5, 5, 4);
+	week5::cb_forward_future(0.06, 1.25, 0.9, 0.5, 5, 0.1, 6, 4);
+	week5::caplet(0.06, 1.25, 0.9, 0.5, 5, 6, 0.02);
+	week5::swap_swaption(0.06, 1.25, 0.9, 0.5, 5, 6, 0.05, 3, 0.0);
+	week5::elementary(0.06, 1.25, 0.9, 0.5, 5);
+	cout << endl;
+
+	cout << "--------   Quiz  ------" << endl;
+	cout << endl;
+	week5::question1();
+	cout << endl;
 
 
 
