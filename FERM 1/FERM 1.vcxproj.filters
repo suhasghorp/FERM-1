@@ -33,6 +33,9 @@
     <ClInclude Include="week5.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BDT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
