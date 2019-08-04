@@ -10,4 +10,4 @@ about learning financial engineering and not C++. So the implementations are bar
 The VS 2017 solution requires Eigen 3.3.3 Nuget package by oneZeroPlus.
 Eigen library is used to solve the linear equations arising out option's replicating portfolio (week 3)
 
-You could just run the executable FERM I.exe instead of setting up the solution.
+You could just run the executable FERM1.exe instead of setting up the solution.
