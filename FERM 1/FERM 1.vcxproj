@@ -157,11 +157,14 @@
   <ItemGroup>
     <ClInclude Include="BDT.h" />
     <ClInclude Include="ferm1.h" />
+    <ClInclude Include="functor.h" />
+    <ClInclude Include="Hazard_Rate_Term_Structure.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="week2.h" />
     <ClInclude Include="week3.h" />
     <ClInclude Include="Week4.h" />
     <ClInclude Include="week5.h" />
+    <ClInclude Include="Wk6_Defaultable_Bonds.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FERM1.cpp" />

@@ -80,7 +80,7 @@ namespace week6 {
 		int m_num_periods;
 		vector<double> m_spot_rates;
 
-		my_functor(double b, int num_periods, vector<double> spot_rates) : Functor<double>(14,14),m_b(b),m_num_periods(num_periods),m_spot_rates(spot_rates) {}
+		my_functor(double b, int num_periods, vector<double> spot_rates) : Functor<double>(num_periods,num_periods),m_b(b),m_num_periods(num_periods),m_spot_rates(spot_rates) {}
 		int operator()(const Eigen::VectorXd &x, Eigen::VectorXd &fvec) const
 		{
 			vector<double> vec(x.data(), x.data() + x.rows() * x.cols());
@@ -101,7 +101,7 @@ namespace week6 {
 	};
 		
 
-	vector<vector<double>> buildBDT(vector<double>& yield_curve, vector<double>& a_guesses, double b, int num_periods, double T, double inityield) {
+	vector<vector<double>> buildBDT(vector<double>& yield_curve, vector<double>& a_guesses, double b, int num_periods, double T) {
 
 		Eigen::VectorXd x = Eigen::Map<Eigen::VectorXd, Eigen::Unaligned>(a_guesses.data(), a_guesses.size());		
 

@@ -36,6 +36,15 @@
     <ClInclude Include="BDT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Wk6_Defaultable_Bonds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Hazard_Rate_Term_Structure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="functor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
