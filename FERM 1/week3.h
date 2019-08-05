@@ -164,9 +164,6 @@ namespace week3 {
 		double R = 1.02;
 		double K = 102;
 		double d = 1 / u;
-
-		double q = ((R - d) / (u - d));
-
 		double Cu = u * S;
 		double Cd = d * S;
 

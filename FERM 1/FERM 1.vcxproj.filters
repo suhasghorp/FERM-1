@@ -42,7 +42,7 @@
     <ClInclude Include="Hazard_Rate_Term_Structure.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="functor.h">
+    <ClInclude Include="functors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

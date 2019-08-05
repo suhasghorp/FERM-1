@@ -173,7 +173,7 @@ namespace week4 {
 		for (int step = num_periods_option - 1; step >= 0; --step) {
 			vector<double> future_payoff(step + 1);
 			vector<double> stock_payoff(step + 1);
-			vector<double> temp(step + 1);
+			temp.resize(step + 1);
 			for (int i = 0; i <= step; ++i) {
 				future_payoff[i] = exp(-r * T / num_periods_future) * (q * payoffs[step + 1][i + 1] + (1 - q) * payoffs[step + 1][i]);
 				//stock_payoff[i] = (is_call ? 1 : -1) * (stock_prices[step][i] - K);
@@ -232,7 +232,7 @@ namespace week4 {
 		cout << endl;*/
 	}
 
-	void question8(bool p_is_call, bool p_is_american) {
+	void question8() {
 		
 		double S0 = 100.0;
 		double T = 0.25;
@@ -257,14 +257,14 @@ namespace week4 {
 		vector<double> temp = call_10_payoffs; // we are going to transform temp in-place for chooser_payoffs below
 
 		std::transform(temp.begin(), temp.end(), put_10_payoffs.begin(), temp.begin(),
-			[](float call_payoff, float put_payoff) {
+			[](double call_payoff, double put_payoff) {
 			return max(call_payoff, put_payoff);
 		});
 
 		chooser_payoffs[num_periods_chooser] = temp;
 
 		for (int step = num_periods_chooser - 1; step >= 0; --step) {
-			vector<double> temp(step + 1);
+			temp.resize(step + 1);
 			for (int i = 0; i <= step; ++i) {
 				//note we discount back using 15 periods
 				temp[i] = exp(-r * T / num_periods) * (q * chooser_payoffs[step + 1][i + 1] + (1 - q) * chooser_payoffs[step + 1][i]);

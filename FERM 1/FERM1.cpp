@@ -65,7 +65,7 @@ int main()
 	cout << endl;
 	week4::question6();
 	cout << endl;
-	week4::question8(true,false);
+	week4::question8();
 	cout << endl;
 
 	//Week 5
@@ -77,7 +77,7 @@ int main()
 	week5::zcb_option(0.06, 1.25, 0.9, 0.5, 5, 4);
 	week5::cb_forward_future(0.06, 1.25, 0.9, 0.5, 5, 0.1, 6, 4);
 	week5::caplet(0.06, 1.25, 0.9, 0.5, 5, 6, 0.02);
-	week5::swap_swaption(0.06, 1.25, 0.9, 0.5, 5, 6, 0.05, 3, 0.0);
+	week5::swap_swaption(0.06, 1.25, 0.9, 0.5, 5, 6, 0.05, 3);
 	week5::elementary(0.06, 1.25, 0.9, 0.5, 5);
 	cout << endl;
 
@@ -98,19 +98,19 @@ int main()
 
 	vector<double> spot_rates = { 0.073,0.0762,0.081,0.0845,0.092,0.0964,0.1012,0.1045,0.1075,0.1122,0.1155,0.1192,0.122,0.1232 };
 	vector<double> a_guesses = { 7.3,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0 };
-	vector<vector<double>> bdt_short_rates = week6::buildBDT(spot_rates, a_guesses, 0.005, 14, 14);
+	vector<vector<double>> bdt_short_rates = week6::buildBDT(spot_rates, a_guesses, 0.005, 14);
 	vector<vector<double>> swap_prices = week5::swap_lattice(bdt_short_rates, 10, 0.1165, 0.5, 0);
 	cout << "Swap Price: " << setprecision(6) << swap_prices[0][0] << endl << endl;
-	vector<vector<double>> swaption_prices = week5::swaption_lattice(bdt_short_rates, swap_prices, 2, 0.0, 0.5);
+	vector<vector<double>> swaption_prices = week5::swaption_lattice(bdt_short_rates, swap_prices, 2, 0.5);
 	cout << "Swaption price: " << setprecision(6) << swaption_prices[0][0] << endl << endl;
 
 	//BDT_b = 0.01
 	cout << "--------   b = 0.01  ------" << endl;
 	cout << endl;
-	bdt_short_rates = week6::buildBDT(spot_rates, a_guesses, 0.01, 14, 14);
+	bdt_short_rates = week6::buildBDT(spot_rates, a_guesses, 0.01, 14);
 	swap_prices = week5::swap_lattice(bdt_short_rates, 10, 0.1165, 0.5, 0);
 	cout << "Swap Price: " << setprecision(6) << swap_prices[0][0] << endl << endl;
-	swaption_prices = week5::swaption_lattice(bdt_short_rates, swap_prices, 2, 0.0, 0.5);
+	swaption_prices = week5::swaption_lattice(bdt_short_rates, swap_prices, 2, 0.5);
 	cout << "Swaption price: " << setprecision(6) << swaption_prices[0][0] << endl << endl;
 
 	//Defaultable bond
@@ -146,14 +146,14 @@ int main()
 	cout << "--------  Week6 Quiz  ------" << endl << endl;
 	spot_rates = { 0.03, 0.031, 0.032,0.033, 0.034,0.035, 0.0355, 0.036, 0.0365, 0.037 };
 	a_guesses = {3.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0 };
-	bdt_short_rates = week6::buildBDT(spot_rates, a_guesses, 0.05, 10, 10);
+	bdt_short_rates = week6::buildBDT(spot_rates, a_guesses, 0.05, 10);
 	swap_prices = week5::swap_lattice(bdt_short_rates, 10, 0.039, 0.5, 0);
-	swaption_prices = week5::swaption_lattice(bdt_short_rates, swap_prices, 3, 0.0, 0.5);
+	swaption_prices = week5::swaption_lattice(bdt_short_rates, swap_prices, 3, 0.5);
 	cout << "Answer Swaption price b = 0.05: " << setprecision(0) << swaption_prices[0][0] * 1000000.0 << endl << endl;
 
-	bdt_short_rates = week6::buildBDT(spot_rates, a_guesses, 0.1, 10, 10);
+	bdt_short_rates = week6::buildBDT(spot_rates, a_guesses, 0.1, 10);
 	swap_prices = week5::swap_lattice(bdt_short_rates, 10, 0.039, 0.5, 0);
-	swaption_prices = week5::swaption_lattice(bdt_short_rates, swap_prices, 3, 0.0, 0.5);
+	swaption_prices = week5::swaption_lattice(bdt_short_rates, swap_prices, 3, 0.5);
 	cout << "Answer Swaption price b = 0.1: " << setprecision(0) << swaption_prices[0][0] * 1000000.0 << endl << endl;
 
 

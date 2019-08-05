@@ -85,22 +85,22 @@ namespace week5 {
 
 	vector<vector<double>> option_price_lattice(const vector<vector<double>>& short_rates, const vector<vector<double>>& zcb_prices, int option_maturity, double strike, double q, bool is_call, bool is_american) {
 		vector<vector<double>> option_prices(option_maturity + 1);
-		int step = zcb_prices[option_maturity].size();
+		size_t step = zcb_prices[option_maturity].size();
 		for (int i = 0; i < step; ++i) {
 			option_prices[option_maturity].push_back(max(0.0 , (is_call? 1.0 : -1.0) * (zcb_prices[option_maturity][i] - strike)));			
 		}
 
-		for (int step = option_maturity - 1; step >= 0; --step) {
+		for (int stepp = option_maturity - 1; stepp >= 0; --stepp) {
 			vector<double> payoffs;
-			for (int i = 0; i <= step; ++i) {
+			for (int i = 0; i <= stepp; ++i) {
 				if (is_american) {
-					payoffs.push_back(max((is_call ? 1.0 : -1.0) * (zcb_prices[step][i] - strike), (q * option_prices[step + 1][i + 1] + (1.0 - q) * (option_prices[step + 1][i]))/(1.0 + short_rates[step][i])));
+					payoffs.push_back(max((is_call ? 1.0 : -1.0) * (zcb_prices[stepp][i] - strike), (q * option_prices[stepp + 1][i + 1] + (1.0 - q) * (option_prices[stepp + 1][i]))/(1.0 + short_rates[stepp][i])));
 				}
 				else {
-					payoffs.push_back(((q * option_prices[step + 1][i + 1]) + ((1.0 - q) * (option_prices[step + 1][i])))/(1.0 + short_rates[step][i]));					
+					payoffs.push_back(((q * option_prices[stepp + 1][i + 1]) + ((1.0 - q) * (option_prices[stepp + 1][i])))/(1.0 + short_rates[stepp][i]));					
 				}
 			}
-			option_prices[step] = payoffs;
+			option_prices[stepp] = payoffs;
 			payoffs.clear();
 		}
 
@@ -188,7 +188,7 @@ namespace week5 {
 		return swap_prices;
 	}
 
-	vector<vector<double>> swaption_lattice(const vector<vector<double>>& short_rates, const vector<vector<double>>& swap_prices, int swaption_maturity, double strike, double q) {
+	vector<vector<double>> swaption_lattice(const vector<vector<double>>& short_rates, const vector<vector<double>>& swap_prices, int swaption_maturity, double q) {
 		vector<vector<double>> swaption_prices(swaption_maturity + 1); 
 		vector<double> prices;
 		for (int i = 0; i < swap_prices[swaption_maturity].size(); ++i) {
@@ -237,11 +237,11 @@ namespace week5 {
 		cout << "Caplet price: " << caplet_prices[0][0] << endl;
 	}
 
-	void swap_swaption(double r00, double u, double d, double q, int num_periods, int swap_maturity, double fixed_rate, int swaption_maturity, double strike) {
+	void swap_swaption(double r00, double u, double d, double q, int num_periods, int swap_maturity, double fixed_rate, int swaption_maturity) {
 		vector<vector<double>> short_rates = short_rate_lattice(r00, u, d, num_periods);
 		vector<vector<double>> swap_prices = swap_lattice(short_rates, swap_maturity, fixed_rate, q, 0);
 		cout << "Swap Price: " << swap_prices[0][0] << endl;
-		vector<vector<double>> swaption_prices = swaption_lattice(short_rates, swap_prices, swaption_maturity, strike, q);
+		vector<vector<double>> swaption_prices = swaption_lattice(short_rates, swap_prices, swaption_maturity, q);
 		cout << "Swaption price: " << swaption_prices[0][0] << endl;
 	}
 
@@ -301,7 +301,7 @@ namespace week5 {
 		cout << "Compute the initial price of a swaption that matures at time t=5 and has a strike of 0. The underlying swap is the same swap as described in the previous question with a notional of 1 million." << endl;
 		cout << "To be clear, you should assume that if the swaption is exercised at t=5 then the owner of the swaption will receive all cash-flows from the underlying swap from times t=6 to t=11 inclusive. " << endl;
 		cout << "(The swaption strike of 0 should also not be confused with the fixed rate of 4.5% on the underlying swap.)" << endl;
-		vector<vector<double>> swaption_prices = swaption_lattice(short_rates, swap_prices, 5, 0.0, 0.5);
+		vector<vector<double>> swaption_prices = swaption_lattice(short_rates, swap_prices, 5, 0.5);
 		cout << "Q6 Answer:" << setprecision(0) << swaption_prices[0][0] * 1000000.0 << endl << endl;
 
 		
